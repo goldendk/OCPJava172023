@@ -1,2 +1,6 @@
 rootProject.name = 'OCPJava17_2023'
 
+include 'chapter19:module1'
+include 'chapter19:module2'
+include 'chapter19:app1'
+

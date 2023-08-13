@@ -1,0 +1,43 @@
+Rules for Java modules:
+
+Declaration:
+
+modules <modulename> {
+
+}
+
+Keywords:
+
+exports -
+
+requires - which other modules it requires - must match the fq module name.
+
+requires transitive - modules requiring <this> module will also implicitly require the modules in the requires transitive list
+Usage: requires transitive <modulename>
+
+requires static - required at compile time but optional at runtime.
+Usage: requires static <module-name>
+
+export - specify packages which public, protected classes are accesseble to other modules requireing this one.
+Usage: exports <some.full.package.name>
+
+Usage: exports <some.full.package.name> to <some-other-module-name>,<some-second-module>.
+This is called a qualified export. The dependency direction here is a little weird IMO.
+
+uses - specify a service used by this module. Specify the fqn of the service.
+Usage: uses some.class.or.interface
+
+provides...with - Makes <this> module a service provider. <this> module exports or *provides* a service implementation for other modules to <use>
+Usage: provides some.interface.or.abstract.class with some.impl.or.subclass
+
+open, opens and opens...to - Open/Close reflection for other modules *at runtime only*.
+Usage: opens some.package.fqn
+Usage: opens some.packge.fqn to some.module.name, some-other-module
+
+Usage: open module <module.fqn> {
+    // module directives.
+}
+
+Default values:
+
+

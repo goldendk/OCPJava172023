@@ -1,0 +1,8 @@
+plugins {
+    id 'java'
+}
+
+dependencies{
+    implementation project(":chapter19:module1")
+    implementation project(":chapter19:module2")
+}
