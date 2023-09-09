@@ -1,5 +1,7 @@
 package book.test3.OO;
 
+import java.io.IOException;
+
 public interface SubInterface extends SomeInterface {
 
     // @Override - not valid on static methods.
@@ -18,5 +20,5 @@ public interface SubInterface extends SomeInterface {
 //    SomeInterface returnsSomeInterface();
 
 
-    Number onlyInSubInterface();
+    Number onlyInSubInterface() throws IOException;
 }

@@ -1,5 +1,7 @@
 package book.test3.OO;
 
+import java.io.IOException;
+
 public class SubInterfaceImpl implements SubInterface {
 
     /*
@@ -18,4 +20,16 @@ public class SubInterfaceImpl implements SubInterface {
     public SubInterface returnsSomeInterface() {
         return null;
     }
+
+    @Override
+    public Number onlyInSubInterface() { // removed throws clause, but override is still valid.
+        return null;
+    }
+
+
+    Number onlyInParentClass(int i) throws IOException, RuntimeException {
+        System.out.println("SubInterfaceImpl#onlyInParentClass");
+        return null;
+    }
+
 }
