@@ -1,0 +1,15 @@
+Deserializing a Serializable class will not invoke any constructors or any initializer block - even if they are static.
+
+In a try-catch-finally it is the *LAST* return statement that wins.
+
+When a type (MyClass) has a static method and a normal method with the same signature they will cause compile error.
+
+Most I/O operations in Java throws IOException so this must be caught or catch one of it super classes.
+
+Final variables in classes of basic types must be initialized by a initializer block or constructor - no default values.
+Default values are set by the compiler after the constructor is run.
+
+When an interface extends another it cannot declare a static method with the same name as an instace method in the super
+interface - the reverse is allowed. Sub interfaces can declare instance methods that has the same name as a static method
+in the super interface.
+
