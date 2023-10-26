@@ -21,3 +21,28 @@ List.of(...) methods are basically the same as statically declared constants - d
 When making virtual call determination with objects and null is passed it will take the most specific method, which
 means the method with the most specific class (lowest subclass).
 Note that thi is different from the widening >> boxing >> varargs with primitive types.
+
+
+TODO LIst
+
+Java I/O - console
+
+Modules services in modular applications
+
+Concurrency
+
+Streams and lamdas - parallel streams.
+
+Sealed classes
+
+I18N - Dateformat, NumberFormat
+
+Generic classes creation and usage
+
+OOA - Interfaces
+
+Flow - if/else switch
+
+Character and binary streams
+
+Collection API
