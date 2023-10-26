@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
@@ -15,10 +16,12 @@ public class Test9Main {
 
         IntStream s = IntStream.range(0, 2);
         //s.collect(null, null, null);
+        List<Integer> collect = s.boxed().collect(Collectors.toList());
 
         DoubleStream d = DoubleStream.of(0.0, 0.1);
         Init init = new Init();
         System.out.println(init.i);
+List<String> list = null;
 
         byte b = 27;
         int i = 9;
