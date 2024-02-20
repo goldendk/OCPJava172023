@@ -1,1 +1,7 @@
+Build all modules directly - will compile all dependent modules. 
+note the absence of --module-path (\libs). 
 javac -d out --module-source-path src --module org.example.model
+
+
+in 'out' we can now build the jar file of the project. 
+
