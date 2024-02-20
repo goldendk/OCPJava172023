@@ -1,7 +1,66 @@
+Simple example. 
+
+org.example.app --depends on--> org.example.model
+
+
 Build all modules directly - will compile all dependent modules. 
 note the absence of --module-path (\libs). 
 javac -d out --module-source-path src --module org.example.model
 
 
 in 'out' we can now build the jar file of the project. 
+
+jar --verbose --create --file libs\model.jar -C out\org.example.model .
+
+yields output:
+
+added manifest
+added module-info: module-info.class
+adding: org/(in = 0) (out= 0)(stored 0%)
+adding: org/example/(in = 0) (out= 0)(stored 0%)
+adding: org/example/model/(in = 0) (out= 0)(stored 0%)
+adding: org/example/model/foo/(in = 0) (out= 0)(stored 0%)
+adding: org/example/model/foo/FooService.class(in = 400) (out= 290)(deflated 27%)
+
+
+Build the application jar. 
+jar --verbose --create --file libs\app.jar --main-class org.example.app.ApplicationMain -C out\org.example.app .
+
+Run the application jar as modularized application jar file: 
+
+java --module-path libs --module org.example.app
+or 
+java --module-path libs --module org.example.app/org.example.app.ApplicationMain
+
+update model module to use a service in org.example.helper.impl module implementing an interface in org.example.helper.api module.
+
+So:
+
+org.example.app --depend_on--> org.example.helper.api --transitive require--> org.example.helper.impl
+Helper impl contains org.example.helper.impl.HelperImpl1 and HelperImpl2 that implements a service discovery in both ways.
+
+Building the two modules. 
+
+javac -d out --module-source-path src --module org.example.helper.api,org.example.helper.impl
+
+
+This builds the locator, api and impl: javac -d out --module-source-path src --module org.example.helper.locator
+
+Appliation is the consumer.
+
+Application should build everything. 
+
+jar --verbose --create --file libs\model.jar -C out\org.example.model .
+jar --verbose --create --file libs\helper-api.jar -C out\org.example.helper.api .
+jar --verbose --create --file libs\helper-impl.jar -C out\org.example.helper.impl .
+jar --verbose --create --file libs\helper-locator.jar -C out\org.example.helper.locator .
+jar --verbose --create --file libs\app.jar --main-class org.example.app.ApplicationMain -C out\org.example.app .
+
+
+non-modular jars become automatic modules that have the truncated name of the jar file. Then they can be referenced by other modules. 
+automatic modules automatically depends on all other modules (making them 'normal' classes). 
+
+Unnamed module essentially contain the entire classpath. Unnamed module can READ ALL MODULES (classes), from module path or classpath.
+
+
 
