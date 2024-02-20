@@ -6,6 +6,9 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven {
+        url "https://mvn.jysk.com/repository/repo/"
+    }
     mavenCentral()
 }
 
