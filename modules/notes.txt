@@ -61,6 +61,6 @@ non-modular jars become automatic modules that have the truncated name of the ja
 automatic modules automatically depends on all other modules (making them 'normal' classes). 
 
 Unnamed module essentially contain the entire classpath. Unnamed module can READ ALL MODULES (classes), from module path or classpath.
-
+Unnamed module opens and exports all packages.
 
 
