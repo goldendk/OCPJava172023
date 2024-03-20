@@ -1,8 +1,13 @@
 package chapter17;
 
+import java.text.DateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class JavaTimeMain {
     public static void main(String... args) {
@@ -14,6 +19,33 @@ public class JavaTimeMain {
         runLocalDateTime();
         runOffsetDateTime();
         foo();
+
+
+        Date date = new Date();
+        DateFormat dateTimeInstance = DateFormat.getDateTimeInstance();
+
+        System.out.println(dateTimeInstance.format(date));
+        DateFormat dateInstance = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("da", "DK"));
+        System.out.println(dateInstance.format(date));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+
+        OffsetDateTime now = OffsetDateTime.now();
+        System.out.println(formatter.format(now));
+        LocalDateTime now1 = LocalDateTime.now();
+        System.out.println(formatter.format(now1));
+        String s = null;
+
+        BiFunction<String, String, String> f = String::concat;
+
+        System.out.println(f.apply("a", "b"));
+
+        Function<String, String> ff = str -> str.concat(str);
+
+
+        String[] sa = { "charlie", "bob", "andy", "dave" };
+        Collections.sort(Arrays.asList(sa), null);
+        System.out.println(sa[0]);
     }
 
     private static void runLocalDateTime() {

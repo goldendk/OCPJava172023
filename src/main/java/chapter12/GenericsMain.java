@@ -20,7 +20,7 @@ public class GenericsMain {
             return null;
         }
 
-        //   private static T instance = null; //not allowed.
+        //  private static T instance = null; //not allowed.
 
     }
 }

@@ -13,7 +13,7 @@ public class LamdaMain {
     interface AgreementB extends AgreementA{
 
         void doIt();
-        //not that this simple implements the basic equals from Object.class.
+        //Note that this simply implements the basic equals from Object.class.
         boolean equals(Object o);
 
     }

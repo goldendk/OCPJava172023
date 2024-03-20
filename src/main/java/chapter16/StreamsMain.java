@@ -1,6 +1,7 @@
 package chapter16;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
@@ -93,6 +94,9 @@ public class StreamsMain {
         List.of(0, 0, 1,2,2,3)
                 .stream().distinct()
                 .forEachOrdered(System.out::println);
+
+        Optional<String> reduce1 = List.of("a", "b").stream().reduce((a, b) -> a + b);
+        System.out.println(reduce1);
     }
 
 
